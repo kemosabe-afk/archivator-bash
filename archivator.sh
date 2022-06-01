@@ -115,43 +115,43 @@ checkbin && checkfile && checkdir
 case ${c} in
     tar)
         echo -e "\033[0;31mArchiving ${f} into .tar archive..."; \
-        tar -cf "${d}""${f}".tar "${f}";
+        tar -cf "${d}/${f}".tar "${f}";
         echo -e "\033[0;31mDone!"
         ;;
 
     tgz)
         echo -e "\033[0;31mArchiving ${f} into .tar.gz archive..."; \
-        tar -czf "${d}""${f}".tar.gz "${f}";
+        tar -czf "${d}/${f}".tar.gz "${f}";
         echo -e "\033[0;31mDone!"
         ;;
 
     tbz2)
         echo -e "\033[0;31mArchiving ${f} into .tar.bz2 archive..."; \
-        tar -cjf "${d}""${f}".tar.bz2 "${f}";
+        tar -cjf "${d}/${f}".tar.bz2 "${f}";
         echo -e "\033[0;31mDone!";
         ;;
 
     txz)
         echo -e "\033[0;31mArchiving ${f} into .tar.xz archive..."; \
-        tar -cJf "${d}""${f}".tar.xz "${f}";
+        tar -cJf "${d}/${f}".tar.xz "${f}";
         echo -e "\033[0;31mDone!";
         ;;
 
     7z)
         echo -e "\033[0;31mArchiving ${f} into .7z archive..."; \
-        7z a "${d}""${f}".7z "${f}" > NULL; rm NULL;
+        7z a "${d}/${f}".7z "${f}" > NULL; rm NULL;
         echo -e "\033[0;31mDone!";
         ;;
 
     rar)
         echo -e "\033[0;31mArchiving ${f} into .rar archive..."; \
-        rar a "${d}""${f}".rar "${f}" > NULL; rm NULL;
+        rar a "${d}/${f}".rar "${f}" > NULL; rm NULL;
         echo -e "\033[0;31mDone!";
         ;;
 
     zip)
         echo -e "\033[0;31mArchiving ${f} into .zip archive..."; \
-        zip -r "${d}""${f}".zip "${f}" > NULL; rm NULL;
+        zip -r "${d}/${f}".zip "${f}" > NULL; rm NULL;
         echo -e "\033[0;31mDone!"
         ;;
 esac
