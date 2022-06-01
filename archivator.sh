@@ -4,8 +4,7 @@
 # CHECKS #
 ##########
 
-checkbin()
-{
+checkbin() {
 case ${c} in
     tar|tgz|tbz2|txz)
         if [ "$({ which tar; } &> /dev/null; echo $?)" == 1 ]; then
@@ -34,8 +33,10 @@ esac
 }
 
 checkfile() {
-if [ ! -f "${f}" ]; then
-    echo -e "\033[0;31m'${f}' file does not exist!"; exit 1
+if [ -n "${f}" ]; then
+    if [ ! -f "${f}" ]; then
+        echo -e "\033[0;31m'${f}' file does not exist!"; exit 1
+    fi
 fi
 }
 
@@ -51,8 +52,7 @@ fi
 # USAGE #
 #########
 
-usage()
-{
+usage() {
 echo -e "
         Usage:          \033[1m$0 [-c|-x create|extract] [-d directory] [-f file]\033[0m
 
@@ -106,12 +106,13 @@ checkbin && checkfile && checkdir
 
 [[ -n ${d} ]] && [[ ${d} != */ ]] && d="${d}/"
 
-
 ##############
 # ARCHIVATOR #
 ##############
 
-[ -n "${c}" ] && [ -z "${x}" ] && [ -n "${f}" ] && case ${c} in
+[ -n "${c}" ] && [ -z "${x}" ] && [ -n "${f}" ] && \
+
+case ${c} in
     tar)
         echo -e "\033[0;31mArchiving ${f} into .tar archive..."; \
         tar -cf "${d}""${f}".tar "${f}";
@@ -162,6 +163,7 @@ esac
 shopt -s nocasematch
 
 [ -z "${c}" ] && [ -z "${x}" ] && [ -n "${f}" ] && \
+
 case $(file "${f}") in
     *"tar"*)
         if [ -n "${d}" ];then
@@ -246,6 +248,7 @@ case $(file "${f}") in
             echo -e "\033[0;31mDone!"
         fi
             ;;
+
     *)
         usage
             ;;
