@@ -7,25 +7,25 @@
 checkbin() {
 case ${c} in
     tar|tgz|tbz2|txz)
-        if [ "$({ which tar; } &> /dev/null; echo $?)" == 1 ]; then
+        if ! (which tar &> /dev/null); then
             echo -e "\033[0;31m'tar' utility is not installed on your device"; exit 1
         fi
         ;;
 
     7z)
-        if [ "$({ which 7z; } &> /dev/null; echo $?)" == 1 ]; then
+        if ! (which 7z &> /dev/null); then
             echo -e "\033[0;31m'7-Zip' utility is not installed on your device"; exit 1
         fi
         ;;
 
     rar)
-        if [ "$({ which rar; } &> /dev/null; echo $?)" == 1 ]; then
+        if ! (which rar &> /dev/null); then
             echo -e "\033[0;31m'RAR' utility is not installed on your device"; exit 1
         fi
         ;;
     
     zip)
-        if [ "$({ which zip; } &> /dev/null; echo $?)" == 1 ]; then
+        if ! (which zip &> /dev/null); then
             echo -e "\033[0;31m'ZIP' utility is not installed on your device"; exit 1
         fi
         ;;
