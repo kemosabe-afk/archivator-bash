@@ -40,8 +40,10 @@ fi
 }
 
 checkdir() {
-if [ ! -d "${d}" ]; then
-     echo -e "\033[0;31m'${d}' directory does not exist!"; exit 1
+if [ -n "${d}" ]; then
+    if [ ! -d "${d}" ]; then
+        echo -e "\033[0;31m'${d}' directory does not exist!"; exit 1
+    fi
 fi
 }
 
